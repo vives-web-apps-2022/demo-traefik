@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  todo:
+    # A container that exposes an API to show its IP address
+    image: todolist
+    labels:
+      - "traefik.http.routers.todolist.rule=Host(`todo.localtest.me`)"
+    networks:
+      - reverse-proxy
+
+
+networks:
+  reverse-proxy:
+    external: true

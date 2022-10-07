@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  hello:
+    # A container that exposes an API to show its IP address
+    image: tutum/hello-world
+    labels:
+      - "traefik.http.routers.hello.rule=Host(`hello.localtest.me`)"
+    networks:
+      - reverse-proxy
+
+
+networks:
+  reverse-proxy:
+    external: true
